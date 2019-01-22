@@ -29,6 +29,8 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bGroundTile</background>
+    <background>background\bTrees</background>
+    <background>background\bMountains</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
