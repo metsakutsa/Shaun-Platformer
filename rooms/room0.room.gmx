@@ -110,9 +110,6 @@
     <instance objName="oWall" x="928" y="320" name="inst_E1708E75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oWall" x="960" y="320" name="inst_B7C76E6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oWall" x="992" y="320" name="inst_14254956" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oWall" x="1024" y="320" name="inst_D665460D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oWall" x="1056" y="320" name="inst_F8E73D16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oTransition" x="288" y="192" name="inst_A0D32932" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oLevelEnd" x="992" y="256" name="inst_7DEF497D" locked="0" code="target = room1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
@@ -126,7 +123,6 @@
     <tile bgName="bGroundTile" x="768" y="320" w="96" h="32" xo="160" yo="64" id="10000120" name="inst_68A412EF" depth="10" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bGroundTile" x="864" y="320" w="96" h="32" xo="160" yo="64" id="10000121" name="inst_515C7BD0" depth="10" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bGroundTile" x="960" y="320" w="96" h="32" xo="160" yo="64" id="10000122" name="inst_718BBCBE" depth="10" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bGroundTile" x="1056" y="320" w="96" h="32" xo="160" yo="64" id="10000123" name="inst_2F850FE2" depth="10" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bGroundTile" x="0" y="0" w="32" h="128" xo="0" yo="32" id="10000130" name="inst_D92FB274" depth="10" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bGroundTile" x="0" y="128" w="32" h="128" xo="0" yo="32" id="10000131" name="inst_A9FC6A71" depth="10" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bGroundTile" x="640" y="192" w="32" h="32" xo="160" yo="160" id="10000139" name="inst_78DAAF7E" depth="10" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

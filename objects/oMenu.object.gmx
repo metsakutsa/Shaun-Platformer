@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,25 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Init
+            <string>/// Setup
 
-w = display_get_gui_width();
-h = display_get_gui_height();
-h_half = h*0.5;
+gui_width = display_get_gui_width();
+gui_height = display_get_gui_height();
+gui_margin = 32;
 
-enum TRANS_MODE{
-    OFF,
-    NEXT,
-    GOTO,
-    RESTART,
-    INTRO
-}
+menu_x = gui_width + 200;
+menu_y = gui_height - gui_margin;
+menu_x_target = gui_width - gui_margin;
+menu_speed = 25; //Lower is faster
+menu_font = fMenu;
+menu_itemheight = font_get_size(fMenu);
+menu_committed = -1;
+menu_control = true;
 
-mode = TRANS_MODE.INTRO;
+menu[2] = "New Game";
+menu[1] = "Continue";
+menu[0] = "Quit";
 
-percent = 1;
-
-target = room;
+menu_items = array_length_1d(menu);
+menu_cursor = 2;
 </string>
           </argument>
         </arguments>
@@ -66,39 +68,39 @@ target = room;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Progress the transition effect
+            <string>///Control menu
 
-if mode != TRANS_MODE.OFF {
-    if mode == TRANS_MODE.INTRO {
-        percent = max(0,percent - max ((percent/10), 0.005) );
-    }
-    
-    else {
-        percent = min(1.1, percent + max (((1.1-percent)/10),0.005));
-    }
-    
-    if percent == 1.1 or percent == 0{
-        switch(mode){
-            case TRANS_MODE.INTRO: {
-                mode = TRANS_MODE.OFF;
-                break;
-            }
-            case TRANS_MODE.NEXT: {
-                mode = TRANS_MODE.INTRO;
-                room_goto_next();
-                break;
-            }
-            case TRANS_MODE.RESTART: {
-                game_restart();   
-                break;
-            }
-            case TRANS_MODE.GOTO: {
-                mode = TRANS_MODE.INTRO;
-                room_goto(target);   
-                break;
-            }
-        }
-    }
+//Item ease in
+
+menu_x += (menu_x_target - menu_x) / menu_speed;
+
+//Keyboard Controls
+if menu_control {
+   if keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")){
+      menu_cursor++;
+      
+      if (menu_cursor &gt;= menu_items) menu_cursor = 0;
+   }
+   
+   if keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S")){
+      menu_cursor--;
+      
+      if (menu_cursor &lt;0) menu_cursor = menu_items-1;
+   }
+   
+   if keyboard_check_pressed(vk_enter) or keyboard_check_pressed(vk_space) {
+      menu_x_target = gui_width + 200;
+      menu_committed = menu_cursor;
+      menu_control = false;
+   }
+}
+
+if menu_x &gt; gui_width + 150 and menu_committed != -1 {
+   switch(menu_committed){
+       case 2: default: slideTransition(TRANS_MODE.NEXT); break;
+       //TO-DO case 1 for continue
+       case 0: game_end(); break;
+   }
 }
 </string>
           </argument>
@@ -122,38 +124,36 @@ if mode != TRANS_MODE.OFF {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw black bars
+            <string>/// Draw Menu
 
-if mode != TRANS_MODE.OFF {
+draw_set_font(fMenu);
+draw_set_halign(fa_right);
+draw_set_valign(fa_bottom);
+
+for (var i = 0 ; i&lt; menu_items ;i++ ){
+    var offset = 2;
+    var txt = menu[i];
+    if menu_cursor == i {
+       txt = string_insert("&gt; ", txt, 0);
+       var col = c_white;
+    } 
+    else {
+      var col = c_gray;
+    }
+    var xx = menu_x;
+    var yy = menu_y - (menu_itemheight * (i*1.5)); //draw menu items with spacing
+
+    //Draw text with black outline
     draw_set_color(c_black);
-    draw_rectangle(0,0,w,percent*h_half,false);
-    draw_rectangle(0,h,w,h-(percent*h_half),false);
-}
+    draw_text(xx+offset,yy,txt);
+    draw_text(xx-offset,yy,txt);
+    draw_text(xx,yy+offset,txt);
+    draw_text(xx,yy-offset,txt);
+    
+    draw_set_color(col);
+    draw_text(xx,yy,txt);
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="82">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Restart game
-slideTransition(TRANS_MODE.RESTART); 
+}
 </string>
           </argument>
         </arguments>

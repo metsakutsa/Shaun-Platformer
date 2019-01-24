@@ -40,6 +40,9 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shWhite.shader</shader>
   </shaders>
+  <fonts name="fonts">
+    <font>fonts\fMenu</font>
+  </fonts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\oPlayer</object>
@@ -56,9 +59,11 @@
     <objects name="System">
       <object>objects\oTransition</object>
       <object>objects\oLevelEnd</object>
+      <object>objects\oMenu</object>
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rMenu</room>
     <room>rooms\room0</room>
     <room>rooms\room1</room>
   </rooms>
