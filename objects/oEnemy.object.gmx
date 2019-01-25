@@ -42,6 +42,7 @@ alarm[0] = room_speed * 5;
 
 hitfrom = 0;
 
+size = 1;
 </string>
           </argument>
         </arguments>
@@ -95,7 +96,8 @@ if hp &lt;= 0 {
         direction = other.hitfrom;
         hsp = lengthdir_x(3,direction);
         vsp = lengthdir_y(3,direction);
-        if sign(hsp) != 0 image_xscale = sign(hsp);
+        if sign(hsp) != 0 image_xscale = sign(hsp) * other.size;
+        image_yscale = other.size;
     }
     instance_destroy();
 }
@@ -170,15 +172,8 @@ if !ground and sign(vsp) &lt; 0 {
 }
 
 //orientation
-image_xscale = sign(hsp);
-
-
-/*
-if x &gt; oPlayer.x {
-    image_xscale = -1;
-} else if x &lt; oPlayer.x {
-    image_xscale = 1;
-}
+if (hsp!=0) image_xscale = sign(hsp) * size;
+image_yscale = size;
  
 </string>
           </argument>

@@ -51,6 +51,7 @@
     <objects name="Enemy">
       <object>objects\oEnemy</object>
       <object>objects\oDeadBody</object>
+      <object>objects\oEnemyBig</object>
     </objects>
     <objects name="Environment">
       <object>objects\oWall</object>
@@ -67,6 +68,9 @@
     <room>rooms\room0</room>
     <room>rooms\room1</room>
   </rooms>
+  <constants number="1">
+    <constant name="SAVEFILE">"Save.sav"</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
