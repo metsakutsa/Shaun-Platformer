@@ -84,6 +84,9 @@ collision();
 //Jump
 if ground and key_jump {
     vsp -= 7;
+    if !audio_is_playing(snLanding){
+        audio_play_sound(snLanding,4,false);
+    }
 }
 </string>
           </argument>
@@ -116,6 +119,11 @@ if !ground and sign(vsp) &lt; 0 {
     image_index = 1;
     image_speed = 0;
 } else if ground and sign(hsp) = 0 {
+    if sprite_index == sPlayerA{
+       if !audio_is_playing(snLanding){
+          audio_play_sound(snLanding,4,false);
+       }
+    }
     sprite_index = sPlayer;
     image_speed = 0;
 } else if ground and sign(hsp) != 0 {
@@ -129,7 +137,7 @@ if x &gt; mouse_x {
 } else if x &lt; mouse_x {
     image_xscale = 1;
 }
- 
+
 </string>
           </argument>
         </arguments>
@@ -158,6 +166,32 @@ if background_exists("bMountains"){
 
 if background_exists("bTrees"){
     background_x[1] = view_xview[0]/8;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Footsteps
+if sprite_index = sPlayerR {
+   audio_play_sound(choose(snFootstep1,snFootstep2,snFootstep3,snFootstep4),5,false);
 }
 </string>
           </argument>

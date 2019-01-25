@@ -4,7 +4,15 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snFootstep1</sound>
+    <sound>sound\snFootstep2</sound>
+    <sound>sound\snFootstep3</sound>
+    <sound>sound\snFootstep4</sound>
+    <sound>sound\snDeath</sound>
+    <sound>sound\snLanding</sound>
+    <sound>sound\snShoot</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="Player">
       <sprite>sprites\sPlayerA</sprite>

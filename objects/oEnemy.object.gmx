@@ -204,6 +204,9 @@ if canshoot{
             canshoot = false;
             alarm[0] = room_speed * 5;
             var bul = instance_create(x,y,oBullet);
+            if !sound_isplaying(snShoot){
+               audio_play_sound(snShoot,5,false);
+            }
             bul.dir = point_direction(x,y,oPlayer.x,oPlayer.y);
             bul.direction = bul.dir;
         }
@@ -212,11 +215,42 @@ if canshoot{
             canshoot = false;
             alarm[0] = room_speed * 5;
             var bul = instance_create(x,y,oBullet);
+            if !sound_isplaying(snShoot){
+               audio_play_sound(snShoot,5,false);
+            }
             bul.dir = point_direction(x,y,oPlayer.x,oPlayer.y);
             bul.direction = bul.dir;
         }
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Footstep
+/*
+if sprite_index = sEnemyR {
+   audio_play_sound(choose(snFootstep1,snFootstep2,snFootstep3,snFootstep4),5,false);
+}
+
 </string>
           </argument>
         </arguments>
