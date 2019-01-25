@@ -83,8 +83,9 @@ collision();
 
 //Jump
 if ground and key_jump {
-    vsp -= 7;
+    vsp = -7;
     if !audio_is_playing(snLanding){
+        audio_sound_pitch(snLanding,choose(0.8,1.0,1.2));
         audio_play_sound(snLanding,4,false);
     }
 }
@@ -127,6 +128,11 @@ if !ground and sign(vsp) &lt; 0 {
     sprite_index = sPlayer;
     image_speed = 0;
 } else if ground and sign(hsp) != 0 {
+    if sprite_index == sPlayerA{
+       if !audio_is_playing(snLanding){
+          audio_play_sound(snLanding,4,false);
+       }
+    }
     sprite_index = sPlayerR;
     image_speed = 1/room_speed * 6;
 }

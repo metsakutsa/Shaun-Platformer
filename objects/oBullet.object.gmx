@@ -58,6 +58,7 @@ speed = 5;
         flash = 3;
         hitfrom = other.direction;
     }
+    audio_play_sound(snLanding,4,false);
     instance_destroy();
 }
 </string>
@@ -82,11 +83,13 @@ speed = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hostile {
+            <string>///Collide with the shield
+
+if hostile {
     hostile = false;
     //speed = -speed;
     direction = point_direction(oPlayer.x, oPlayer.y,mouse_x,mouse_y);
-    
+    audio_play_sound(snShoot,4,false);
 }
 </string>
           </argument>
@@ -115,6 +118,7 @@ speed = 5;
         hp--;
         flash = 3;
     }
+    audio_play_sound(snLanding,4,false);
     instance_destroy();
 }
 </string>
