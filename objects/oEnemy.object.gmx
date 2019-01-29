@@ -197,6 +197,8 @@ image_yscale = size;
             <kind>1</kind>
             <string>///shoop da whoop
 
+if !instance_exists(oPlayer) canshoot = false;
+
 if canshoot{
 
     if sign(image_xscale) == -1 {

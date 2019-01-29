@@ -19,6 +19,7 @@
       <sprite>sprites\sPlayer</sprite>
       <sprite>sprites\sPlayerR</sprite>
       <sprite>sprites\sShield</sprite>
+      <sprite>sprites\sPDead</sprite>
     </sprites>
     <sprites name="Enemy">
       <sprite>sprites\sEnemyR</sprite>
@@ -54,6 +55,7 @@
   <objects name="objects">
     <objects name="Player">
       <object>objects\oPlayer</object>
+      <object>objects\oPDead</object>
       <object>objects\oShield</object>
     </objects>
     <objects name="Enemy">
