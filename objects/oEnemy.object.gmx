@@ -43,6 +43,8 @@ alarm[0] = room_speed * 5;
 hitfrom = 0;
 
 size = 1;
+
+afraidofheights = true;
 </string>
           </argument>
         </arguments>
@@ -125,6 +127,12 @@ if hp &lt;= 0 {
             <kind>1</kind>
             <string>///Move
  
+//Don't walk off edges
+
+if ground and afraidofheights and !place_meeting(x+hsp,y+1,oWall) {
+   hsp = - hsp;
+}
+
 collision();
 
 if place_meeting(x + hsp,y, oWall){
@@ -155,6 +163,7 @@ if place_meeting(x + hsp,y, oWall){
             <kind>1</kind>
             <string>///Animation
 
+
 if !ground and sign(vsp) &lt; 0 {
     sprite_index = sEnemyA;
     image_index = 0;
@@ -175,6 +184,7 @@ if !ground and sign(vsp) &lt; 0 {
 if (hsp!=0) image_xscale = sign(hsp) * size;
 image_yscale = size;
  
+
 </string>
           </argument>
         </arguments>
