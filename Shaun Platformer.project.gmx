@@ -31,9 +31,12 @@
       <sprite>sprites\sWall</sprite>
       <sprite>sprites\sBullet</sprite>
       <sprite>sprites\sTiles</sprite>
+      <sprite>sprites\sSign</sprite>
     </sprites>
     <sprites name="System">
       <sprite>sprites\sTriggerArea</sprite>
+      <sprite>sprites\sMarker</sprite>
+      <sprite>sprites\sTitle</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -45,12 +48,14 @@
   <scripts name="scripts">
     <script>scripts\collision.gml</script>
     <script>scripts\slideTransition.gml</script>
+    <script>scripts\drawSetText.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shWhite.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fMenu</font>
+    <font>fonts\fSign</font>
   </fonts>
   <objects name="objects">
     <objects name="Player">
@@ -66,11 +71,13 @@
     <objects name="Environment">
       <object>objects\oWall</object>
       <object>objects\oBullet</object>
+      <object>objects\oSign</object>
     </objects>
     <objects name="System">
       <object>objects\oTransition</object>
       <object>objects\oLevelEnd</object>
       <object>objects\oMenu</object>
+      <object>objects\oText</object>
     </objects>
   </objects>
   <rooms name="rooms">
