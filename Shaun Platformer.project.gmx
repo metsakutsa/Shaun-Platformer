@@ -62,6 +62,7 @@
       <object>objects\oPlayer</object>
       <object>objects\oPDead</object>
       <object>objects\oShield</object>
+      <object>objects\oShieldPickup</object>
     </objects>
     <objects name="Enemy">
       <object>objects\oEnemy</object>
